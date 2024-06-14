@@ -1,0 +1,40 @@
+<html>
+<head>
+<title></title>
+<h1><marquee style="color:red;">ACHIEVE YOUR PROFESSIONAL CAREER WITH AJIRY</marquee></h1>
+<body style="background-color:powderblue;">
+<CENTER>
+<img width="100" height="100" src="1234.jpg"/>
+
+<h1 style="color:blue;">WELCOME TO AJIRY CENTER</h1>
+<p>Here we go!!!</p>
+<p>Follow the link below To create an account</p>
+<br/>
+<br/>
+<br/>
+<a href ="https//:www.ajirydigitaltrainingcenter.com"/><b>ajiry.ac.ke</b></a>
+</CENTER>
+<h1 Style="color:blue;"><b> * OUR OBJECTIVE</b></h1>
+<p>To Bring rapid growing population to the field of Research using Modern and advanced Machines in space</p>
+<h1 style="color:blue;">*We offer the following courses</h1>
+<ol>
+<li>Basic computer application</li>
+<li>Programming languages such as:</li>
+<ul>
+<li>Python</li>
+<li>Java</li>
+<li>c & c++ </li>
+<li>Javascript</li>
+<li>Html and css</li>
+</ul>
+<li>Web development</li>
+<li>System configuration</li>
+<li>Hardware and software Design</li>
+<li>Networking</li>
+<li>Graphic Design</li>
+</ol>
+<h1 style="color:blue;">*mission</h1>
+<p>-Bring Young growing population To the Field of Day To Day Evolving Technology.</p>
+
+<head>
+</html>
