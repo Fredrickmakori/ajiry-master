@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDocs,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBaLhPqKpcmkCMkJD3wi7btgaOu6MGHu8Q",
   authDomain: "ajiry-master.firebaseapp.com",
@@ -29,4 +36,14 @@ getDocs(colRef).then((snapshot) => {
     .catch((err) => {
       console.log(err.message);
     });
+});
+//adding documents
+const addBookForm = document.querySelector(".add");
+addBookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+//deleting documents
+const deleteBookForm = document.querySelector(".delete");
+deleteBookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 });
