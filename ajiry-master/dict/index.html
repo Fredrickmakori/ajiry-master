@@ -3,14 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Login Page</title>
+    <style>
+      body {
+        display: inline-block;
+        width: 80%;
+        background-color: aliceblue;
+        align-content: center;
+        padding: 5%;
+      }
+      .container {
+        display: inline-block;
+        align-items: center; /* Center content within container (optional) */
+        background-color: aliceblue;
+        padding: 20%;
+        padding-top: none;
+        width: 90%;
+        margin: 0 auto; /* Center container horizontally */
+      }
+      .container input {
+        display: block;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        float: left;
+        /* Add spacing between form elements */
+      }
+
+      .formEl {
+        font-size: xx-large;
+        color: blue;
+        margin-bottom: 10px; /* Add spacing between form elements */
+      }
+
+      .formBut {
+        display: inline-block; /* Use inline-block for better button layout */
+        background-color: blue;
+        color: white;
+        font-size: large;
+        padding: 5px 10px; /* Adjust padding for better button size */
+        border-radius: 8%;
+        border: 4px solid black;
+        margin-right: 10px; /* Add spacing between buttons */
+      }
+      .headDet {
+        font-size: xx-large;
+      }
+      .headDet b {
+        color: blue;
+      }
+      .siteLogo {
+        display: flex;
+        align-content: center;
+        width: 200px;
+        height: 150px;
+        float: left;
+      }
+      .siteLogo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
   </head>
   <body>
-    <form action="" class="delete">
-      <label for="id">Document id</label>
-      <input type="text" name="id" required />
-      <button>delete a book</button>
+    <header>
+      <div class="siteLogo">
+        <img
+          src="../dict/web/44.png"
+          alt="kisii county logo"
+          style="float: left; width: 100px; height: 100px"
+        />
+      </div>
+      <div class="headDet">
+        <b>Welcome to the login page</b><br />
+        <i>Please fill in the fields as indicated</i>
+      </div>
+    </header>
+    <form class="container">
+      <div class="formEl">
+        <label for="email"><b>Email</b></label
+        ><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="ex abc@yahoo.com"
+        />
+        <hr color="blue" />
+      </div>
+      <br />
+      <div class="formEl">
+        <label for="password"><b>Password</b></label
+        ><br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="XXXXXXXXX"
+        />
+        <hr color="blue" />
+      </div>
+
+      <br />
+
+      <span class="butEle">
+        <input type="button" name="signup" id="sign-up" value="Sign Up" />
+        <input type="button" name="signin" id="sign-in" value="Login" />
+        <input type="button" name="signout" id="sign-out" value="Logout" />
+      </span>
     </form>
-    <script src="bundle.js"></script>
   </body>
 </html>

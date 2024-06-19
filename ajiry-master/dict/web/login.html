@@ -26,8 +26,8 @@
     <script src="script.js"></script>
     <script>
         // Your JavaScript code
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById('loginForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
     
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;

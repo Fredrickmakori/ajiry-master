@@ -6,6 +6,7 @@
     "build": "webpack --config webpack.config.js"
   },
   "devDependencies": {
+    "hint": "^7.1.12",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   },
@@ -14,6 +15,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "firebase": "^10.12.2"
+    "bower": "^1.8.14",
+    "firebase": "^10.12.2",
+    "firebaseui": "^6.1.0"
   }
 }

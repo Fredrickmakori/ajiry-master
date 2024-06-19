@@ -1,5 +1,7 @@
 // Webpack uses this to work with directories
 const path = require("path");
+var firebase = require("firebase");
+var firebaseui = require("firebaseui");
 
 // This is the main configuration object.
 // Here, you write different options and tell Webpack what to do
