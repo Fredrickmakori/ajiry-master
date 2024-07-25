@@ -1,0 +1,15 @@
+input {
+  display: block;
+  margin: 0 auto;
+  height: 4cqmax;
+  padding: 2px;
+  text-align: center;
+  color: rgb(44, 65, 181);
+  border: 1px double blue;
+}
+.signin {
+  display: inline-block;
+  width: 80%;
+  align-content: center;
+  margin: 2px double blue;
+}
