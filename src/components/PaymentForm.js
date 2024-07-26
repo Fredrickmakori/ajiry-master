@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+ // Import the CSS file
 
-const PaymentForm = () => {
+export const PaymentForm = () => {
   const [phone, setPhone] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
   const [amount, setAmount] = useState(0);
@@ -13,6 +14,7 @@ const PaymentForm = () => {
   const handleAccountNumberChange = (event) => {
     setAccountNumber(event.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch("/api/payment", {
@@ -34,13 +36,14 @@ const PaymentForm = () => {
         setMessage(error.message);
       });
   };
+
   return (
     <form onSubmit={handleSubmit}>
-      <label>
+      <label className="payment-label">
         Phone:
         <input type="text" value={phone} onChange={handlePhoneChange} />
       </label>
-      <label>
+      <label className="payment-label">
         Account Number:
         <input
           type="text"
@@ -48,18 +51,12 @@ const PaymentForm = () => {
           onChange={handleAccountNumberChange}
         />
       </label>
-      <label>
+      <label className="payment-label">
         Amount:
-        <input
-          type="number"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
+        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
       </label>
       <button type="submit">Submit</button>
       <p>{message}</p>
     </form>
   );
 };
-
-export default PaymentForm;

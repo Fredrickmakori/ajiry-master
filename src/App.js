@@ -2,17 +2,20 @@
 import "./App.css";
 import { Auth } from "./components/auth";
 import { PaymentForm } from "./components/PaymentForm";
-//import AddUserDetails, { db } from "./config/firebase";
+import AddUserDetails, { db } from "./config/firebase";
 //import { SetStudent } from "./config/firebase";
-function App() {
+export default function App() {
   //const [users, admitNewUsers] = useState([]);
 
   return (
-    <div className="signin">
+    <div >
       <Auth />
-      <PaymentForm />
     </div>
   );
 }
+export default function Payment(){
+  return (
+    
+  )
+}
 
-export default App;

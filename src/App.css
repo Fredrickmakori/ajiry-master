@@ -1,15 +1,32 @@
-input {
-  display: block;
-  margin: 0 auto;
-  height: 4cqmax;
-  padding: 2px;
-  text-align: center;
-  color: rgb(44, 65, 181);
-  border: 1px double blue;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
-.signin {
-  display: inline-block;
-  width: 80%;
-  align-content: center;
-  margin: 2px double blue;
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  cursor: pointer; /* Set cursor to pointer for all labels */
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #007bff; /* Blue background color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; /* Set cursor to pointer for button */
 }

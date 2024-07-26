@@ -1,0 +1,15 @@
+.payment-form {
+    /* Add general form styles if needed */
+  }
+  
+  .payment-label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer; /* Sets cursor to pointer for all labels */
+  }
+  
+  .payment-label input {
+    /* Style input fields if needed */
+    color: red;
+  }
+  
