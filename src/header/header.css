@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+}
+
+.header-container {
+  height: 40%;
+  width: 20cqmax;
+  object-fit: contain;
+  padding: 4cqmax;
+}
+
+.header-container img {
+  height: 100%;
+  width: 100%;
+}

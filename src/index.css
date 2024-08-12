@@ -1,5 +1,5 @@
-body{
-  background-image: repeating-linear-gradient(white,Blue);
-  background-repeat: no-repeat;
-  
+body {
+  margin: 0 auto;
+  display: flex;
+  width: 80%;
 }

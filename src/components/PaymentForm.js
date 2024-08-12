@@ -1,7 +1,6 @@
 import React, { useState } from "react";
- // Import the CSS file
 
-export const PaymentForm = () => {
+const PaymentForm = () => {
   const [phone, setPhone] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
   const [amount, setAmount] = useState(0);
@@ -53,10 +52,15 @@ export const PaymentForm = () => {
       </label>
       <label className="payment-label">
         Amount:
-        <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
       </label>
       <button type="submit">Submit</button>
       <p>{message}</p>
     </form>
   );
 };
+export default PaymentForm;

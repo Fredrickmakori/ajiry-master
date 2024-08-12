@@ -1,9 +1,13 @@
-import { auth } from "../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, googleProvider } from "../config/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  signOut, // Import signOut function
+} from "firebase/auth";
 import { useState } from "react";
-//import "./css/Style.css";
+import "./Auth.css";
 
-export const Auth = () => {
+const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,13 +18,24 @@ export const Auth = () => {
     } catch (err) {
       console.error(err);
     }
+    window.location.href = "/register";
   };
 
+  const signinWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      console.error(err);
+    }
+    window.location.href = "/register";
+  };
   console.log(auth?.currentUser?.email);
+
   return (
     <div className="login-form">
       <h2>Login</h2>
-      <form onSubmit={signIn}>
+      <form>
         <div className="form-group">
           <label htmlFor="email" className="label">
             Email Address
@@ -39,19 +54,33 @@ export const Auth = () => {
             Password
           </label>
           <input
-            type="password"
+            type="text"
             id="password"
             name="password"
             placeholder="Password..."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <input
+            type="text"
+            id="password"
+            name="password"
+            placeholder="Confirm Password..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-        <button type="submit" className="btn">
-          Sign In
-        </button>
+
+        <input type="button" onClick={signIn} className="btn" value="Login" />
+        <input
+          // type="submit"
+          type="button"
+          onClick={signinWithGoogle}
+          className="btn"
+          value="Sign in with Google"
+        />
       </form>
     </div>
-
   );
 };
+export default Auth;

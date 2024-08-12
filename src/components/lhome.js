@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./home.css"; // Import the CSS file
 import Header from "../header/header";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { db, auth } from "../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect } from "react";
 
-const Home = () => {
+const Lhome = () => {
   const [user, setUser] = React.useState(null);
 
   useEffect(() => {
@@ -26,6 +26,17 @@ const Home = () => {
     return () => unsubscribe();
   }, []);
 
+  const signout = async (e) => {
+    // Corrected function name to signout
+    e.preventDefault();
+    try {
+      await signOut(auth); // Using the imported signOut function
+    } catch (err) {
+      console.error(err);
+    }
+    window.location.href = "/logout";
+  };
+
   const videoSource = "https://www.w3schools.com/html/mov_bbb.mp4";
   const videoOptions = {
     loop: true,
@@ -43,8 +54,14 @@ const Home = () => {
       <span>
         <Header />
         {user ? (
-          <h2 className="route-title">Welcome, {user.firstName}!</h2>
-        ) : null}
+          <h2 className="route-title">
+            Welcome, {user.firstName}! to the ajiry user portal
+          </h2>
+        ) : (
+          <h2 className="route-title">
+            Welcome currentUser to the ajiry registration portal
+          </h2>
+        )}
       </span>
       <div className="route-container">
         <h2 className="route-title">Welcome to the AJiry home page</h2>
@@ -77,10 +94,17 @@ const Home = () => {
               Register
             </Link>
           </Button>
+          <Button
+            //type="submit" // Change to button type
+            type="button" // Change to button type
+            className="btn"
+            value="Sign Out"
+            onClick={signout} // Use the corrected signout function
+          />
         </div>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Lhome;

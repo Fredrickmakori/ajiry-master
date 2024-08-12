@@ -1,0 +1,23 @@
+.home-container {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150%;
+  max-width: 100%;
+}
+.route-container {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.route-title {
+  color: #007bff;
+  font-size: 36px;
+  color: rgb(210, 39, 179);
+}
+
+.nav-link {
+  color: #1f7ce0;
+  text-decoration: none;
+}
