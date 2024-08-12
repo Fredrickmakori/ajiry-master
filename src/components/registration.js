@@ -33,9 +33,9 @@ const Register = () => {
     } catch (error) {
       console.error("Error adding document: ", error);
       alert(
-        "Error adding user details pllease log in to before adding user details"
+        "Error adding user details please ensure you've Logged In to before adding user details"
       );
-      window.location.href = "/login";
+      window.location.href = "/lauth";
     }
   };
 

@@ -5,12 +5,14 @@ import { Routes } from "react-router-dom";
 import About from "./components/about";
 import Contact from "./components/contact";
 import Auth from "./components/auth";
+import Lauth from "./components/lauth";
 import PaymentForm from "./components/PaymentForm";
 import Button from "./Button/Button";
 import Register from "./components/registration";
 import Lhome from "./components/lhome";
 import Go from "./components/go";
 import "./App.css";
+import "./components";
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Go />} />
         <Route path="/lhome" element={<Lhome />} />
+        <Route path="/lauth" element={<Lauth />} />
       </Routes>
     </Router>
   );

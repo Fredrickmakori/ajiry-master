@@ -1,13 +1,13 @@
 import { auth, googleProvider } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
-  signInWithPopup,
-  signOut, // Import signOut function
+  signInWithPopup, // Import signOut function
 } from "firebase/auth";
 import { useState } from "react";
 import "./Auth.css";
+import Button from "../Button/Button";
 
-const Lauth = () => {
+const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,7 +18,7 @@ const Lauth = () => {
     } catch (err) {
       console.error(err);
     }
-    window.location.href = "/register";
+    window.location.href = "/lhome";
   };
 
   const signinWithGoogle = async (e) => {
@@ -28,7 +28,7 @@ const Lauth = () => {
     } catch (err) {
       console.error(err);
     }
-    window.location.href = "/register";
+    window.location.href = "/lhome";
   };
   console.log(auth?.currentUser?.email);
 
@@ -71,10 +71,9 @@ const Lauth = () => {
           />
         </div>
 
-        <input type="button" onClick={signIn} className="btn" value="Login" />
-        <input
+        <Button type="button" onClick={signIn} className="btn" value="Login" />
+        <Button
           // type="submit"
-          type="button"
           onClick={signinWithGoogle}
           className="btn"
           value="Sign in with Google"
@@ -83,4 +82,4 @@ const Lauth = () => {
     </div>
   );
 };
-export default Lauth;
+export default Auth;

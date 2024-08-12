@@ -4,7 +4,7 @@ import "./home.css"; // Import the CSS file
 import Header from "../header/header";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { db, auth } from "../config/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, collection } from "firebase/firestore";
 import React, { useEffect } from "react";
 
 const Lhome = () => {
@@ -24,6 +24,23 @@ const Lhome = () => {
     });
 
     return () => unsubscribe();
+  }, []);
+  const userDetails = collection(db, "user-details");
+  const getUserDetails = async () => {
+    try {
+      const data = await getDocs(userDetails);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setUserDetails(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getUserDetails();
   }, []);
 
   const signout = async (e) => {
@@ -82,16 +99,6 @@ const Lhome = () => {
           <Button>
             <Link to="/payment" className="nav-link">
               Payment
-            </Link>
-          </Button>
-          <Button>
-            <Link to="/auth" className="nav-link">
-              Login
-            </Link>
-          </Button>
-          <Button>
-            <Link to="/register" className="nav-link">
-              Register
             </Link>
           </Button>
           <Button
