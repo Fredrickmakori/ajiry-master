@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./home.css";
 import Header from "../header/header";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Home = () => {
   return (
@@ -35,6 +36,7 @@ const Home = () => {
           </Button>
           <Button>
             <Link to="/register" className="nav-link">
+              <i class="bi bi-house-door"></i>
               Register
             </Link>
           </Button>

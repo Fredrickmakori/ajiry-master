@@ -68,6 +68,12 @@ const Auth = () => {
             className="btn"
             value="Login"
           />
+          <Button
+            type="button"
+            onClick={signinWithGoogle}
+            className="btn"
+            value="Login with Google"
+          />
         </div>
       </form>
     </div>

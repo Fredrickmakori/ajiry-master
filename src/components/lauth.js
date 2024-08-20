@@ -30,7 +30,7 @@ const Lauth = () => {
     } catch (err) {
       console.error(err);
     }
-    window.location.href = "/register";
+    window.location.href = "/lhome";
   };
   console.log(auth?.currentUser?.email);
 
