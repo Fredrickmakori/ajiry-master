@@ -6,6 +6,7 @@ import {
 import { useState } from "react";
 import "./Auth.css";
 import Button from "../Button/Button";
+import "./home.css";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ const Auth = () => {
 
   return (
     <div className="login-form">
-      <h2>Login</h2>
+      <h2 className="route-title">Login</h2>
       <form>
         <div className="form-group">
           <label htmlFor="email" className="label">
@@ -48,8 +49,7 @@ const Auth = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div className="form-group">
+
           <label htmlFor="password" className="label">
             Password
           </label>
@@ -61,23 +61,14 @@ const Auth = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="Confirm Password..."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+
+          <Button
+            type="button"
+            onClick={signIn}
+            className="btn"
+            value="Login"
           />
         </div>
-
-        <Button type="button" onClick={signIn} className="btn" value="Login" />
-        <Button
-          // type="submit"
-          onClick={signinWithGoogle}
-          className="btn"
-          value="Sign in with Google"
-        />
       </form>
     </div>
   );

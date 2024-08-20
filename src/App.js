@@ -12,7 +12,6 @@ import Register from "./components/registration";
 import Lhome from "./components/lhome";
 import Go from "./components/go";
 import "./App.css";
-import "./components";
 
 function App() {
   return (

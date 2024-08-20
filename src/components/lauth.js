@@ -6,6 +6,8 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import "./Auth.css";
+import "./home.css";
+import Button from "../Button/Button";
 
 const Lauth = () => {
   const [email, setEmail] = useState("");
@@ -34,7 +36,7 @@ const Lauth = () => {
 
   return (
     <div className="login-form">
-      <h2>Login</h2>
+      <h2 className="route-title">Login</h2>
       <form>
         <div className="form-group">
           <label htmlFor="email" className="label">
@@ -48,8 +50,7 @@ const Lauth = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div className="form-group">
+
           <label htmlFor="password" className="label">
             Password
           </label>
@@ -58,7 +59,6 @@ const Lauth = () => {
             id="password"
             name="password"
             placeholder="Password..."
-            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
@@ -66,19 +66,12 @@ const Lauth = () => {
             id="password"
             name="password"
             placeholder="Confirm Password..."
-            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
+          <Button onClick={signIn}>Sign Up</Button>
 
-        <input type="button" onClick={signIn} className="btn" value="Login" />
-        <input
-          // type="submit"
-          type="button"
-          onClick={signinWithGoogle}
-          className="btn"
-          value="Sign in with Google"
-        />
+          <Button onClick={signinWithGoogle}>Continue with google</Button>
+        </div>
       </form>
     </div>
   );

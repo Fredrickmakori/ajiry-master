@@ -4,7 +4,7 @@ import logo from "./images/logo.png";
 import masterCardLogo from "./images/mastercard-logo.png";
 import kisiiLogo from "./images/kisii-county-logo.png";
 
-const Header = () => {
+export default function Header() {
   return (
     <div className="header">
       <div className="header-container">
@@ -18,6 +18,4 @@ const Header = () => {
       </div>
     </div>
   );
-};
-
-export default Header;
+}

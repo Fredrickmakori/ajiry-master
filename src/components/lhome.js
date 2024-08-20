@@ -1,87 +1,74 @@
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import "./home.css"; // Import the CSS file
-import Header from "../header/header";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import "./home.css";
+//import Header from "../Header/header";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "../config/firebase";
-import { doc, getDoc, getDocs, collection } from "firebase/firestore";
-import React, { useEffect } from "react";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 
 const Lhome = () => {
-  const [user, setUser] = React.useState(null);
+  const [userData, setUserDetails] = useState([]);
+
+  const [greeting, setGreeting] = useState("");
+  const currentTime = new Date().getHours();
+  const UserCollectionRef = collection(db, "user-details");
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const userDocRef = doc(db, "user-details", user.uid);
-        const userDocSnapshot = await getDoc(userDocRef);
-        if (userDocSnapshot.exists()) {
-          setUser(userDocSnapshot.data());
-        }
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-  const userDetails = collection(db, "user-details");
-  const getUserDetails = async () => {
-    try {
-      const data = await getDocs(userDetails);
-      const filteredData = data.docs.map((doc) => ({
+    const unsub = onSnapshot(UserCollectionRef, (snapshot) => {
+      const filteredData = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setUserDetails(filteredData);
-    } catch (err) {
-      console.error(err);
+    });
+
+    return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserDetails([user]);
+      } else {
+        setUserDetails([]);
+      }
+    });
+  }, []);
+
+  const getTimeOfDay = () => {
+    if (currentTime >= 5 && currentTime < 12) {
+      return "morning";
+    } else if (currentTime >= 12 && currentTime < 17) {
+      return "afternoon";
+    } else if (currentTime >= 17 && currentTime < 21) {
+      return "evening";
+    } else {
+      return "night";
     }
   };
 
-  useEffect(() => {
-    getUserDetails();
-  }, []);
+  const timeOfDay = getTimeOfDay();
+  setGreeting(
+    `Good ${timeOfDay}! ${userData[0]?.firstName} Welcome to the AJiry home page`
+  );
 
   const signout = async (e) => {
-    // Corrected function name to signout
     e.preventDefault();
     try {
-      await signOut(auth); // Using the imported signOut function
+      await signOut(auth);
     } catch (err) {
       console.error(err);
     }
     window.location.href = "/logout";
   };
 
-  const videoSource = "https://www.w3schools.com/html/mov_bbb.mp4";
-  const videoOptions = {
-    loop: true,
-    muted: true,
-    autoPlay: true,
-    playsInline: true,
-  };
-  const video = (
-    <video className="video-background" {...videoOptions}>
-      <source src={videoSource} type="video/mp4" />
-    </video>
-  );
   return (
-    <div className="home-container" video={video} {...videoOptions}>
+    <div className="home-container">
       <span>
-        <Header />
-        {user ? (
-          <h2 className="route-title">
-            Welcome, {user.firstName}! to the ajiry user portal
-          </h2>
-        ) : (
-          <h2 className="route-title">
-            Welcome currentUser to the ajiry registration portal
-          </h2>
-        )}
+        <p>{greeting}</p>
       </span>
       <div className="route-container">
-        <h2 className="route-title">Welcome to the AJiry home page</h2>
         <p className="route-content">
           <i>please click the button for the service you wish to get</i>
         </p>
@@ -102,11 +89,10 @@ const Lhome = () => {
             </Link>
           </Button>
           <Button
-            //type="submit" // Change to button type
-            type="button" // Change to button type
+            type="button"
             className="btn"
             value="Sign Out"
-            onClick={signout} // Use the corrected signout function
+            onClick={signout}
           />
         </div>
       </div>

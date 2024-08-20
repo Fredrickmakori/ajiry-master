@@ -1,51 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import "./home.css"; // Import the CSS file
+import "./home.css";
 import Header from "../header/header";
-import { onAuthStateChanged } from "firebase/auth";
-import { db, auth } from "../config/firebase";
-import { doc, getDoc } from "firebase/firestore";
-import React, { useEffect } from "react";
 
 const Home = () => {
-  const [user, setUser] = React.useState(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const userDocRef = doc(db, "user-details", user.uid);
-        const userDocSnapshot = await getDoc(userDocRef);
-        if (userDocSnapshot.exists()) {
-          setUser(userDocSnapshot.data());
-        }
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  const videoSource = "https://www.w3schools.com/html/mov_bbb.mp4";
-  const videoOptions = {
-    loop: true,
-    muted: true,
-    autoPlay: true,
-    playsInline: true,
-  };
-  const video = (
-    <video className="video-background" {...videoOptions}>
-      <source src={videoSource} type="video/mp4" />
-    </video>
-  );
   return (
-    <div className="home-container" video={video} {...videoOptions}>
-      <span>
-        <Header />
-        {user ? (
-          <h2 className="route-title">Welcome, {user.firstName}!</h2>
-        ) : null}
-      </span>
+    <div className="home-container">
+      <Header />
       <div className="route-container">
         <h2 className="route-title">Welcome to the AJiry home page</h2>
         <p className="route-content">
@@ -69,7 +30,7 @@ const Home = () => {
           </Button>
           <Button>
             <Link to="/auth" className="nav-link">
-              Login
+              login
             </Link>
           </Button>
           <Button>
