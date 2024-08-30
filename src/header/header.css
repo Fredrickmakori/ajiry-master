@@ -1,21 +1,33 @@
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-flex;
+  margin: 0 auto;
   padding: 20px;
-  width: auto;
-  height: auto;
-  background-color: transparent;
+  max-width: 100%;
+  min-width: 100%;
+  justify-content: center;
 }
-
-.header-container {
+.header-container,
+footer {
   height: 40%;
-  width: 20cqmax;
-  object-fit: contain;
-  padding: 4cqmax;
+  width: 40%;
+  justify-content: center;
 }
 
-.header-container img {
+.header-container img,
+.footer img {
   height: 100%;
   width: 100%;
+  object-fit: contain;
+  align-self: center;
+}
+.footer {
+  width: 100vw;
+  bottom: 0;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: aliceblue;
 }
